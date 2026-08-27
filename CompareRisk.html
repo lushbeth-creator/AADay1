@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Propelr: Compare the Risk</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:transparent;font-family:'Inter',sans-serif;color:#1a1a2e;padding:.5rem}
+
+.ptitle{font-family:'Inter',sans-serif;font-weight:700;font-size:20px;color:#202A46;margin-bottom:12px}
+.pbody{font-size:18px;color:#444;line-height:1.75;margin-bottom:24px}
+
+.toggle-row{display:flex;gap:8px;margin-bottom:20px}
+.toggle-btn{
+  font-family:'Inter',sans-serif;font-size:14px;font-weight:700;color:#5D70AE;
+  background:#ffffff;border:1px solid #A6B3D5;border-radius:8px;padding:.55rem 1.3rem;cursor:pointer;
+  transition:background .15s ease,color .15s ease,border-color .15s ease;
+}
+.toggle-btn:hover{background:#F3F6FF}
+.toggle-btn.active{background:#5D70AE;color:#ffffff;border-color:#5D70AE}
+
+/* ===== Gradient window ===== */
+.window{border:1px solid #A6B3D5;border-radius:16px;background:linear-gradient(135deg,#ffffff 0%,#e4e9f7 100%);padding:1.8rem}
+
+.compare-panel{display:none}
+.compare-panel.active{display:flex}
+.compare-panel{gap:32px;align-items:center}
+
+/* ===== Card art ===== */
+.card-art-wrap{
+  flex:0 0 260px;aspect-ratio:1;background:#ffffff;border-radius:20px;
+  display:flex;align-items:center;justify-content:center;padding:14px;
+  box-shadow:0 12px 28px rgba(30,40,80,.10);
+}
+.card-art{
+  width:100%;aspect-ratio:1.55;border-radius:16px;position:relative;
+  background:linear-gradient(135deg,#6b7cb8 0%,#4c5b8f 100%);
+  box-shadow:0 10px 20px rgba(76,91,143,.35);
+}
+.card-art.debit{background:linear-gradient(135deg,#6bbcae 0%,#3f8c7d 100%);box-shadow:0 10px 20px rgba(63,140,125,.35)}
+.card-chip{position:absolute;left:20px;top:44%;width:34px;height:26px;border-radius:5px;background:linear-gradient(135deg,#f0d38a,#d9ac4a)}
+.card-label{position:absolute;top:18px;right:18px;color:#ffffff;font-weight:700;font-size:13px;letter-spacing:.06em}
+.card-dots{position:absolute;bottom:20px;left:20px;display:flex;gap:6px}
+.card-dots span{width:5px;height:5px;border-radius:50%;background:#ffffff}
+
+/* ===== Right content ===== */
+.compare-right{flex:1}
+.panel-heading{font-size:22px;font-weight:700;color:#202A46;margin-bottom:8px;line-height:1.3}
+.panel-text{font-size:16px;color:#444;line-height:1.6;margin-bottom:18px}
+
+.fact-card{
+  background:#ffffff;border-radius:12px;padding:14px 18px;margin-bottom:12px;
+  box-shadow:0 2px 8px rgba(30,40,80,.05);display:flex;gap:12px;align-items:flex-start;
+}
+.fact-card:last-child{margin-bottom:0}
+.fact-dot{width:8px;height:8px;border-radius:50%;background:#5D70AE;margin-top:7px;flex-shrink:0}
+.compare-panel#panel-debit .fact-dot{background:#59A398}
+.fact-title{font-size:17px;font-weight:700;color:#202A46;margin-bottom:3px}
+.fact-desc{font-size:16px;color:#444;line-height:1.55}
+</style>
+</head>
+<body>
+
+<p class="ptitle">Debit and credit move risk differently.</p>
+<p class="pbody">Both payment types can be fraudulent or disputed. The difference is where the money comes from, how the customer is authenticated, and where the exposure sits.</p>
+
+<div class="toggle-row">
+  <button class="toggle-btn active" data-target="credit">Credit Risk</button>
+  <button class="toggle-btn" data-target="debit">Debit Risk</button>
+</div>
+
+<div class="window">
+  <div class="compare-panel active" id="panel-credit">
+    <div class="card-art-wrap">
+      <div class="card-art">
+        <span class="card-label">CREDIT</span>
+        <span class="card-chip"></span>
+        <span class="card-dots"><span></span><span></span><span></span><span></span></span>
+      </div>
+    </div>
+    <div class="compare-right">
+      <p class="panel-heading">Credit extends the promise.</p>
+      <p class="panel-text">The issuing bank pays on the cardholder's behalf and expects repayment later.</p>
+      <div class="fact-card"><span class="fact-dot"></span><div><p class="fact-title">Issuer credit exposure</p><p class="fact-desc">The issuer takes the risk that the cardholder may not repay.</p></div></div>
+      <div class="fact-card"><span class="fact-dot"></span><div><p class="fact-title">Chargeback exposure</p><p class="fact-desc">Fraud, non-delivery, or merchant disputes can reverse funds after settlement.</p></div></div>
+      <div class="fact-card"><span class="fact-dot"></span><div><p class="fact-title">Approval is conditional</p><p class="fact-desc">Authorization confirms available credit, not that the sale can never be challenged.</p></div></div>
+    </div>
+  </div>
+
+  <div class="compare-panel" id="panel-debit">
+    <div class="card-art-wrap">
+      <div class="card-art debit">
+        <span class="card-label">DEBIT</span>
+        <span class="card-chip"></span>
+        <span class="card-dots"><span></span><span></span><span></span><span></span></span>
+      </div>
+    </div>
+    <div class="compare-right">
+      <p class="panel-heading">Debit changes the source, not the need for protection.</p>
+      <p class="panel-text">The transaction draws directly from funds in the customer's bank account.</p>
+      <div class="fact-card"><span class="fact-dot"></span><div><p class="fact-title">Less cardholder credit exposure</p><p class="fact-desc">The customer is using deposited funds rather than borrowing on a credit line.</p></div></div>
+      <div class="fact-card"><span class="fact-dot"></span><div><p class="fact-title">Fraud still exists</p><p class="fact-desc">Stolen credentials, account takeover, and card-not-present fraud can still create losses.</p></div></div>
+      <div class="fact-card"><span class="fact-dot"></span><div><p class="fact-title">Authentication matters</p><p class="fact-desc">PIN-authenticated debit generally provides stronger evidence than signature or card-not-present debit.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.querySelectorAll('.toggle-btn').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    document.querySelectorAll('.toggle-btn').forEach(function(b){ b.classList.toggle('active', b === btn); });
+    document.querySelectorAll('.compare-panel').forEach(function(panel){
+      panel.classList.toggle('active', panel.id === 'panel-' + btn.dataset.target);
+    });
+  });
+});
+</script>
+</body>
+</html>
