@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Propelr: Layer the Defenses</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:transparent;font-family:'Inter',sans-serif;color:#1a1a2e;padding:.5rem}
+
+.ptitle{font-family:'Inter',sans-serif;font-weight:700;font-size:20px;color:#202A46;margin-bottom:12px}
+.pbody{font-size:18px;color:#444;line-height:1.75;margin-bottom:24px}
+
+.icon-badge{
+  flex-shrink:0;width:44px;height:44px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+}
+.icon-badge svg{width:22px;height:22px}
+
+.control-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.control-card{
+  border:1px solid #A6B3D5;border-radius:16px;padding:1.4rem 1.6rem;cursor:pointer;
+  transition:box-shadow .15s ease;
+}
+.control-card:hover{box-shadow:0 6px 18px rgba(51,66,112,.08)}
+.control-card.variant-blue{background:linear-gradient(135deg,#ffffff 0%,#e4e9f7 100%)}
+.control-card.variant-green{background:linear-gradient(135deg,#ffffff 0%,#DAF3EF 100%)}
+.control-card-head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:14px}
+.icon-badge.variant-blue{background:#5D70AE;border-color:#5D70AE}
+.icon-badge.variant-blue svg{stroke:#ffffff}
+.icon-badge.variant-green{background:#59A398;border-color:#59A398}
+.icon-badge.variant-green svg{stroke:#ffffff}
+.control-stage{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#8892a8;margin-top:6px}
+.control-title{font-size:16px;font-weight:700;color:#5D70AE;margin-bottom:4px}
+.control-desc{font-size:14px;color:#444;line-height:1.55}
+.control-prompt{font-size:13px;font-weight:600;color:#59A398;margin-top:10px}
+.control-detail{max-height:0;overflow:hidden;opacity:0;transition:max-height .25s ease,opacity .2s ease;font-size:14px;color:#444;line-height:1.55}
+.control-card.open .control-detail{max-height:160px;opacity:1;margin-top:10px}
+.control-card.open .control-prompt{display:none}
+
+.takeaway-card{
+  display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
+  border:1px solid #F0B429;border-radius:16px;margin-top:28px;padding:1.5rem 1.8rem;
+  background:linear-gradient(135deg,#fff8e6 0%,#ffffff 100%);
+}
+.takeaway-eyebrow{font-size:14px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#9C6B00;margin-bottom:6px}
+.takeaway-headline{font-family:'Inter',sans-serif;font-weight:700;font-size:22px;color:#9C6B00;margin-bottom:8px}
+.takeaway-body{font-size:16px;color:#9C6B00;line-height:1.6;max-width:640px}
+.takeaway-mark{
+  flex-shrink:0;background:#F0B429;color:#ffffff;font-size:12px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;padding:.7rem 1.1rem;border-radius:10px;white-space:nowrap;
+}
+</style>
+</head>
+<body>
+
+<p class="ptitle">KYC and PCI DSS are part of the fraud story.</p>
+<p class="pbody">These are not separate compliance vocabulary lessons. Each control protects a different point in the same risk lifecycle. Select a control to expand it.</p>
+
+<div class="control-grid">
+  <div class="control-card variant-blue" data-idx="0">
+    <div class="control-card-head"><span class="icon-badge variant-blue"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="11" r="2"/><path d="M5.5 16c0-2 1.4-3 3-3s3 1 3 3M14 9h4M14 13h4"/></svg></span><p class="control-stage">Before Approval</p></div>
+    <p class="control-title">KYC verifies the merchant.</p>
+    <p class="control-desc">Know Your Customer confirms that the business and its owners are who they claim to be before processing begins.</p>
+    <p class="control-prompt">Select to see why it matters +</p>
+    <p class="control-detail">KYC helps the processor understand who it is extending transaction exposure to. Identity, ownership, and business details are reviewed during underwriting.</p>
+  </div>
+
+  <div class="control-card variant-green" data-idx="1">
+    <div class="control-card-head"><span class="icon-badge variant-green"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.4 8-8 9-4.6-1-8-4-8-9V6l8-3z"/><path d="M8.5 12l2.3 2.3 4.8-5"/></svg></span><p class="control-stage">At Authorization</p></div>
+    <p class="control-title">Fraud controls evaluate the sale.</p>
+    <p class="control-desc">EMV, PIN, CVV, AVS, biometrics, and transaction scoring help determine whether a payment appears legitimate.</p>
+    <p class="control-prompt">Select to see why it matters +</p>
+    <p class="control-detail">Stopping a suspicious transaction before approval is far less expensive than trying to recover funds after fraud has already occurred.</p>
+  </div>
+
+  <div class="control-card variant-green" data-idx="2">
+    <div class="control-card-head"><span class="icon-badge variant-green"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v3"/></svg></span><p class="control-stage">Around Card Data</p></div>
+    <p class="control-title">PCI DSS protects the environment.</p>
+    <p class="control-desc">PCI DSS establishes the security practices used to protect cardholder data wherever it is stored, processed, or transmitted.</p>
+    <p class="control-prompt">Select to see why it matters +</p>
+    <p class="control-detail">Secure systems, limited access, encryption, and tokenization reduce the chance that stolen data can be used for future fraud.</p>
+  </div>
+
+  <div class="control-card variant-blue" data-idx="3">
+    <div class="control-card-head"><span class="icon-badge variant-blue"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/><path d="M3 7l6-4 6 5 6-5"/></svg></span><p class="control-stage">After Activation</p></div>
+    <p class="control-title">Monitoring catches change.</p>
+    <p class="control-desc">Volume, ticket size, refunds, and chargebacks are tracked because a merchant's risk profile can evolve.</p>
+    <p class="control-prompt">Select to see why it matters +</p>
+    <p class="control-detail">Sudden changes may signal fraud, operational problems, or financial stress. Early intervention is cheaper than account restrictions and losses.</p>
+  </div>
+</div>
+
+<div class="takeaway-card">
+  <div>
+    <p class="takeaway-eyebrow">Key Takeaway</p>
+    <p class="takeaway-headline">The objective is managed risk, not zero risk.</p>
+    <p class="takeaway-body">Know who is processing, protect the data, evaluate each transaction, and keep watching what changes.</p>
+  </div>
+  <span class="takeaway-mark">Know &bull; Protect &bull; Detect &bull; Monitor</span>
+</div>
+
+<script>
+document.querySelectorAll('.control-card').forEach(function(item){
+  item.addEventListener('click', function(){ item.classList.toggle('open'); });
+});
+</script>
+</body>
+</html>
