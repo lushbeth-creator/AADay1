@@ -16,18 +16,6 @@ body{background:transparent;font-family:'Inter',sans-serif;color:#1a1a2e;padding
 .window{border:1px solid #A6B3D5;border-radius:16px;background:linear-gradient(135deg,#ffffff 0%,#e4e9f7 100%);padding:1.6rem 1.8rem}
 .window-title{font-family:'Inter',sans-serif;font-weight:700;font-size:19px;color:#202A46;margin-bottom:14px;line-height:1.3}
 
-/* ===== Hero row ===== */
-.hero-row{display:flex;gap:28px;align-items:stretch;margin-bottom:36px}
-.hero-left{flex:1.2;display:flex;flex-direction:column;justify-content:center}
-.hero-left .pbody{margin-bottom:0}
-.hero-right{flex:1}
-.hero-right .window{height:100%;display:flex;flex-direction:column;justify-content:center}
-
-.obj-list{list-style:none;padding:0;margin:0}
-.obj-list li{font-size:15px;color:#444;line-height:1.5;padding-left:1.6em;position:relative;margin-bottom:10px}
-.obj-list li:last-child{margin-bottom:0}
-.obj-list li::before{content:"\2713";position:absolute;left:0;top:0;color:#59A398;font-weight:700}
-
 /* ===== Stack (interactive) ===== */
 .stack-body{display:flex;gap:28px;align-items:center}
 .stack-nav{flex:0 0 220px;display:flex;flex-direction:column;gap:8px;align-self:center}
@@ -52,24 +40,6 @@ body{background:transparent;font-family:'Inter',sans-serif;color:#1a1a2e;padding
 </style>
 </head>
 <body>
-
-<div class="hero-row">
-  <div class="hero-left">
-    <p class="ptitle">What makes up a merchant's rate?</p>
-    <p class="pbody">Break the total price into the underlying costs and provider markup so a new learner can explain what the merchant is paying for.</p>
-  </div>
-  <div class="hero-right">
-    <div class="window">
-      <p class="eyebrow">By the End, You Can</p>
-      <p class="window-title">Build a clear, merchant-friendly explanation of processing cost.</p>
-      <ul class="obj-list">
-        <li>Identify the three layers in the cost stack</li>
-        <li>Explain why interchange varies by transaction</li>
-        <li>Separate pass-through costs from provider markup</li>
-      </ul>
-    </div>
-  </div>
-</div>
 
 <p class="ptitle">A merchant's rate is built, not invented.</p>
 <p class="pbody">Before comparing pricing models, understand what the price must cover. Select each layer to see what it represents.</p>
