@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Propelr: The Cost Stack</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:transparent;font-family:'Inter',sans-serif;color:#1a1a2e;padding:.5rem}
+
+.eyebrow{font-size:14px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#59A398;margin-bottom:10px}
+.ptitle{font-family:'Inter',sans-serif;font-weight:700;font-size:20px;color:#202A46;margin-bottom:12px}
+.pbody{font-size:18px;color:#444;line-height:1.75;margin-bottom:24px}
+
+.window{border:1px solid #A6B3D5;border-radius:16px;background:linear-gradient(135deg,#ffffff 0%,#e4e9f7 100%);padding:1.6rem 1.8rem}
+.window-title{font-family:'Inter',sans-serif;font-weight:700;font-size:19px;color:#202A46;margin-bottom:14px;line-height:1.3}
+
+/* ===== Hero row ===== */
+.hero-row{display:flex;gap:28px;align-items:stretch;margin-bottom:36px}
+.hero-left{flex:1.2;display:flex;flex-direction:column;justify-content:center}
+.hero-left .pbody{margin-bottom:0}
+.hero-right{flex:1}
+.hero-right .window{height:100%;display:flex;flex-direction:column;justify-content:center}
+
+.obj-list{list-style:none;padding:0;margin:0}
+.obj-list li{font-size:15px;color:#444;line-height:1.5;padding-left:1.6em;position:relative;margin-bottom:10px}
+.obj-list li:last-child{margin-bottom:0}
+.obj-list li::before{content:"\2713";position:absolute;left:0;top:0;color:#59A398;font-weight:700}
+
+/* ===== Stack (interactive) ===== */
+.stack-body{display:flex;gap:28px;align-items:center}
+.stack-nav{flex:0 0 220px;display:flex;flex-direction:column;gap:8px;align-self:center}
+.stack-btn{
+  display:flex;flex-direction:column;align-items:flex-start;gap:2px;
+  padding:14px 16px;border-radius:12px;border:1px solid transparent;background:none;cursor:pointer;
+  text-align:left;font-family:'Inter',sans-serif;transition:background .15s ease,border-color .15s ease;
+}
+.stack-btn:hover{background:#F3F6FF}
+.stack-btn.active{background:#ffffff;border-color:#A6B3D5;box-shadow:0 4px 12px rgba(30,40,80,.06)}
+.stack-btn-label{font-size:15px;font-weight:700;color:#202A46}
+.stack-btn-kicker{font-size:12px;color:#8892a8}
+.stack-btn.active .stack-btn-kicker{color:#59A398}
+
+.stack-detail{flex:1;background:#ffffff;border-radius:16px;padding:1.6rem 1.8rem;border:1px solid #A6B3D5}
+.stack-kicker{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#59A398;margin-bottom:6px}
+.stack-title{font-family:'Inter',sans-serif;font-weight:700;font-size:22px;color:#202A46;margin-bottom:10px}
+.stack-text{font-size:16px;color:#444;line-height:1.65;margin-bottom:16px}
+.merchant-view{border-left:4px solid #59A398;border-radius:0 12px 12px 0;background:#F3F6FF;padding:12px 16px}
+.merchant-view p{font-size:14px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#59A398;margin-bottom:4px}
+.merchant-view span{font-size:15px;color:#202A46;font-weight:600;line-height:1.5}
+</style>
+</head>
+<body>
+
+<div class="hero-row">
+  <div class="hero-left">
+    <p class="ptitle">What makes up a merchant's rate?</p>
+    <p class="pbody">Break the total price into the underlying costs and provider markup so a new learner can explain what the merchant is paying for.</p>
+  </div>
+  <div class="hero-right">
+    <div class="window">
+      <p class="eyebrow">By the End, You Can</p>
+      <p class="window-title">Build a clear, merchant-friendly explanation of processing cost.</p>
+      <ul class="obj-list">
+        <li>Identify the three layers in the cost stack</li>
+        <li>Explain why interchange varies by transaction</li>
+        <li>Separate pass-through costs from provider markup</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<p class="ptitle">A merchant's rate is built, not invented.</p>
+<p class="pbody">Before comparing pricing models, understand what the price must cover. Select each layer to see what it represents.</p>
+
+<div class="window">
+  <div class="stack-body">
+    <div class="stack-nav" id="stackNav"></div>
+    <div class="stack-detail">
+      <p class="stack-kicker" id="stackKicker"></p>
+      <p class="stack-title" id="stackTitle"></p>
+      <p class="stack-text" id="stackText"></p>
+      <div class="merchant-view"><p>In Merchant Terms</p><span id="stackMerchant"></span></div>
+    </div>
+  </div>
+</div>
+
+<script>
+var stackData = [
+  {
+    key: 'interchange',
+    label: 'Interchange',
+    kicker: 'Largest underlying cost',
+    title: 'Interchange',
+    text: 'Interchange varies by transaction. Card type, card brand, merchant category, entry method, and transaction data can all affect qualification and cost.',
+    merchant: 'This is the underlying card-acceptance cost tied to the specific transaction. It is not one universal rate.'
+  },
+  {
+    key: 'network',
+    label: 'Network Fees',
+    kicker: 'Pass-through costs',
+    title: 'Network Assessments & Fees',
+    text: 'Card brands impose assessments and network fees for access, processing, and other network services. These costs are generally passed through within the merchant pricing structure.',
+    merchant: 'These are costs charged through the card networks, not optional markup created by the salesperson.'
+  },
+  {
+    key: 'markup',
+    label: 'Provider Markup',
+    kicker: 'Provider revenue and service',
+    title: 'Processor / Acquirer Markup',
+    text: 'The markup supports processing, risk management, service, reporting, technology, and the acquiring relationship. The pricing model determines how clearly this margin appears.',
+    merchant: 'This is the portion tied to the provider\u2019s services and margin. It may be bundled or shown separately.'
+  }
+];
+
+var nav = document.getElementById('stackNav');
+stackData.forEach(function(layer){
+  var btn = document.createElement('button');
+  btn.className = 'stack-btn';
+  btn.setAttribute('data-key', layer.key);
+  btn.innerHTML =
+    '<span class="stack-btn-label">' + layer.label + '</span>' +
+    '<span class="stack-btn-kicker">' + layer.kicker + '</span>';
+  btn.addEventListener('click', function(){ showLayer(layer.key); });
+  nav.appendChild(btn);
+});
+
+function showLayer(key){
+  var d = stackData.find(function(l){ return l.key === key; });
+  document.querySelectorAll('.stack-btn').forEach(function(b){
+    b.classList.toggle('active', b.getAttribute('data-key') === key);
+  });
+  document.getElementById('stackKicker').textContent = d.kicker;
+  document.getElementById('stackTitle').textContent = d.title;
+  document.getElementById('stackText').textContent = d.text;
+  document.getElementById('stackMerchant').textContent = d.merchant;
+}
+
+showLayer('interchange');
+</script>
+</body>
+</html>
