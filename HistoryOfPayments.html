@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Propelr: History of Payments</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:transparent;font-family:'Inter',sans-serif;color:#1a1a2e;padding:.5rem}
+
+.eyebrow{font-size:14px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#59A398;margin-bottom:10px}
+.ptitle{font-family:'Inter',sans-serif;font-weight:700;font-size:20px;color:#202A46;margin-bottom:12px}
+.pbody{font-size:18px;color:#444;line-height:1.75;margin-bottom:32px}
+
+/* ===== Ascending stairs ===== */
+.stairs-wrap{overflow-x:auto;padding-bottom:6px}
+.stairs-row{display:flex;align-items:flex-end;gap:10px;min-width:760px;position:relative}
+.stair-col{display:flex;flex-direction:column;align-items:center;flex:1;text-align:center}
+
+.stair-content{display:flex;flex-direction:column;align-items:center;margin-bottom:8px}
+.stair-icon{
+  width:40px;height:40px;border-radius:10px;flex-shrink:0;margin-bottom:8px;
+  background:linear-gradient(to bottom,#F3F6FF 0%,#E4E9F7 100%);
+  border:1px solid #A6B3D5;display:flex;align-items:center;justify-content:center;
+}
+.stair-icon svg{width:19px;height:19px;stroke:#59A398;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.stair-col.finale .stair-icon{background:linear-gradient(to bottom,#DAF3EF 0%,#c9ece5 100%);border-color:#59A398}
+.stair-col.finale .stair-icon svg{stroke:#1B2F5B}
+
+.stair-year{font-size:13px;font-weight:700;color:#5D70AE;margin-bottom:2px}
+.stair-label{font-size:12.5px;color:#444;line-height:1.4;max-width:110px}
+
+.stair-connector{width:2px;height:18px;background:#A6B3D5;margin-bottom:0}
+
+.stair-block{
+  width:100%;border-radius:8px 8px 0 0;border:1px solid #A6B3D5;border-bottom:none;
+  background:linear-gradient(180deg,#DAF3EF 0%,#D3DBF2 100%);
+}
+.stairs-baseline{height:3px;background:#A6B3D5;border-radius:2px;min-width:760px;margin-top:0}
+
+/* ===== Ask the Room ===== */
+.ask-room{background:#ffffff;border-left:4px solid #59A398;border-radius:0 12px 12px 0;padding:16px 20px;margin:28px 0 0}
+.ask-room-label{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#59A398;margin-bottom:6px}
+.ask-room-text{font-size:16px;color:#202A46;font-weight:600;line-height:1.5}
+
+/* ===== Reflect ===== */
+.reflect-label{font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#59A398;margin-top:24px;margin-bottom:6px}
+.reflect-text{font-size:18px;color:#444;font-style:italic;line-height:1.75}
+</style>
+</head>
+<body>
+
+<p class="ptitle">Payments didn't start with plastic.</p>
+<p class="pbody">Every control you'll learn about today, KYC, PCI, authorization, exists because of something that went wrong earlier in this timeline. Watch what happens with each new step up.</p>
+
+<div class="stairs-wrap">
+  <div class="stairs-row">
+
+    <div class="stair-col">
+      <div class="stair-content">
+        <span class="stair-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 3.5"/></svg></span>
+        <p class="stair-year">Long Ago</p>
+        <p class="stair-label">Trust was local, so was risk.</p>
+      </div>
+      <div class="stair-connector"></div>
+      <div class="stair-block" style="height:36px"></div>
+    </div>
+
+    <div class="stair-col">
+      <div class="stair-content">
+        <span class="stair-icon"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18"/><path d="M7 14h4"/></svg></span>
+        <p class="stair-year">Early 1900s</p>
+        <p class="stair-label">Checks move money without cash in hand.</p>
+      </div>
+      <div class="stair-connector"></div>
+      <div class="stair-block" style="height:60px"></div>
+    </div>
+
+    <div class="stair-col">
+      <div class="stair-content">
+        <span class="stair-icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg></span>
+        <p class="stair-year">1950s</p>
+        <p class="stair-label">Diners Club launches the first charge card.</p>
+      </div>
+      <div class="stair-connector"></div>
+      <div class="stair-block" style="height:88px"></div>
+    </div>
+
+    <div class="stair-col">
+      <div class="stair-content">
+        <span class="stair-icon"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18"/><rect x="6" y="13" width="4" height="2" rx="0.5"/></svg></span>
+        <p class="stair-year">1960s&ndash;70s</p>
+        <p class="stair-label">Bank cards and the magnetic stripe arrive.</p>
+      </div>
+      <div class="stair-connector"></div>
+      <div class="stair-block" style="height:118px"></div>
+    </div>
+
+    <div class="stair-col">
+      <div class="stair-content">
+        <span class="stair-icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><rect x="7" y="9" width="4" height="3" rx="1"/></svg></span>
+        <p class="stair-year">2000s&ndash;15</p>
+        <p class="stair-label">The EMV chip beats the stripe.</p>
+      </div>
+      <div class="stair-connector"></div>
+      <div class="stair-block" style="height:150px"></div>
+    </div>
+
+    <div class="stair-col finale">
+      <div class="stair-content">
+        <span class="stair-icon"><svg viewBox="0 0 24 24"><rect x="6" y="3" width="12" height="18" rx="2"/><path d="M9 3l.5 1h5L15 3"/><path d="M2 10a10 10 0 0 1 4-4M22 10a10 10 0 0 0-4-4" opacity="0.6"/></svg></span>
+        <p class="stair-year">Today</p>
+        <p class="stair-label">The card is barely in the room, tap, wallet, or click.</p>
+      </div>
+      <div class="stair-connector"></div>
+      <div class="stair-block" style="height:184px"></div>
+    </div>
+
+  </div>
+  <div class="stairs-baseline"></div>
+</div>
+
+<div class="ask-room">
+  <p class="ask-room-label">Discuss</p>
+  <p class="ask-room-text">Look at that climb. What do you think kept getting added at each new step, convenience, or risk, or both?</p>
+</div>
+
+<p class="reflect-label">Reflect</p>
+<p class="reflect-text">Notice the pattern: every new convenience in this timeline created a new kind of risk. That's the lens for the rest of today.</p>
+
+</body>
+</html>
