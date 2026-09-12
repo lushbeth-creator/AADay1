@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Day 1 | Today's Flight Plan</title>
+  <style>
+    :root{
+      --blue:#5D70AE;
+      --green:#59A398;
+      --medium-blue:#B0D5D4;
+      --light-blue:#DAF3EF;
+      --purple:#A6B3D5;
+      --light-purple:#F3F6FF;
+      --navy:#1B2F5B;
+      --ink:#000000;
+      --white:#FFFFFF;
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      padding:.5rem;
+      background:transparent;
+      color:var(--ink);
+      font-family:Inter,Aptos,"Segoe UI",Arial,sans-serif;
+    }
+
+    .flight-plan{ width:100%; margin:auto; }
+
+    .intro{
+      margin-bottom:26px;
+    }
+
+    h1{
+      margin:0 0 10px;
+      color:var(--navy);
+      font-size:24px;
+      font-weight:700;
+      line-height:1.3;
+      white-space:nowrap;
+    }
+
+    .intro-copy{
+      margin:0;
+      font-size:18px;
+      line-height:1.65;
+      color:var(--ink);
+    }
+
+    .destination{
+      margin-top:20px;
+      padding:18px 20px;
+      background:linear-gradient(135deg,#ffffff 0%,#DAF3EF 100%);
+      border:1px solid var(--medium-blue);
+      border-left:6px solid var(--green);
+      border-radius:14px;
+    }
+
+    .destination span{
+      display:block;
+      margin-bottom:6px;
+      color:var(--green);
+      font-size:14px;
+      font-weight:800;
+      letter-spacing:.1em;
+      text-transform:uppercase;
+    }
+
+    .destination strong{
+      display:block;
+      color:var(--navy);
+      font-size:18px;
+      font-weight:700;
+      line-height:1.45;
+    }
+
+    .route{
+      position:relative;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .route-card{
+      display:flex;
+      flex-direction:column;
+      min-width:0;
+      padding:24px 22px 22px;
+      background:linear-gradient(135deg,#ffffff 0%,#E4E9F7 100%);
+      border:1px solid var(--purple);
+      border-radius:18px;
+    }
+
+    .route-card:hover{ border-color:var(--blue); }
+
+    .icon{
+      display:grid;
+      place-items:center;
+      width:46px;
+      height:46px;
+      margin-bottom:18px;
+      color:var(--white);
+      background:var(--green);
+      border-radius:50%;
+    }
+
+    .icon svg{
+      width:23px;
+      height:23px;
+      fill:none;
+      stroke:currentColor;
+      stroke-width:1.9;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+    }
+
+    .card-label{
+      margin:0 0 7px;
+      color:var(--green);
+      font-size:14px;
+      font-weight:800;
+      letter-spacing:.1em;
+      text-transform:uppercase;
+    }
+
+    h2{
+      margin:0 0 10px;
+      color:var(--navy);
+      font-size:20px;
+      font-weight:700;
+      line-height:1.3;
+    }
+
+    .card-copy{
+      margin:0 0 18px;
+      color:var(--ink);
+      font-size:18px;
+      line-height:1.6;
+    }
+
+    .you-will{
+      margin-top:auto;
+      padding-top:16px;
+      border-top:1px solid rgba(93,112,174,.20);
+    }
+
+    .you-will strong{
+      display:block;
+      margin-bottom:8px;
+      color:var(--navy);
+      font-size:16px;
+      font-weight:700;
+    }
+
+    .you-will ul{ margin:0; padding:0; list-style:none; }
+
+    .you-will li{
+      position:relative;
+      margin-top:7px;
+      padding-left:18px;
+      color:var(--ink);
+      font-size:16px;
+      line-height:1.5;
+    }
+
+    .you-will li::before{
+      content:"";
+      position:absolute;
+      top:.55em;
+      left:1px;
+      width:6px;
+      height:6px;
+      background:var(--green);
+      border-radius:50%;
+    }
+
+    .route-card:nth-child(2) .you-will li::before{ background:var(--blue); }
+
+    .bottom-line{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      margin-top:20px;
+      padding:18px 21px;
+      color:var(--white);
+      background:var(--navy);
+      border-radius:14px;
+    }
+
+    .bottom-line svg{
+      flex:0 0 29px;
+      width:29px;
+      height:29px;
+      fill:none;
+      stroke:var(--medium-blue);
+      stroke-width:1.8;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+    }
+
+    .bottom-line p{ margin:0; color:#EDF0FA; font-size:18px; line-height:1.55; }
+    .bottom-line strong{ color:var(--white); }
+
+    @media(max-width:860px){
+      .intro{grid-template-columns:1fr;gap:18px}
+      h1{white-space:normal}
+      .route{grid-template-columns:1fr}
+      .route-card{display:grid;grid-template-columns:auto 1fr;column-gap:16px}
+      .icon{grid-row:1 / span 3;margin:0}
+      .you-will{grid-column:2}
+    }
+
+    @media(max-width:520px){
+      .route-card{display:block;padding:21px 19px}
+      .icon{margin-bottom:17px}
+      .bottom-line{align-items:flex-start}
+    }
+  </style>
+</head>
+<body>
+  <main class="flight-plan">
+    <header class="intro">
+      <div>
+        <h1>How payments move and where risk lives.</h1>
+        <p class="intro-copy">Today builds the foundation behind every merchant conversation. You'll follow a card payment, see why approval isn't the finish line and learn how the industry manages exposure.</p>
+      </div>
+      <aside class="destination">
+        <span>Today's destination</span>
+        <strong>Explain the payment journey and its risks in clear, merchant-friendly language.</strong>
+      </aside>
+    </header>
+
+    <section class="route" aria-label="Day 1 learning outcomes">
+      <article class="route-card">
+        <div class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="19" cy="19" r="2"/><path d="M7 12h5a3 3 0 0 0 3-3V7M15 15v-1a2 2 0 0 0-2-2M15 15v2h2"/></svg>
+        </div>
+        <div>
+          <p class="card-label">Follow the payment</p>
+          <h2>Trace the authorization journey.</h2>
+          <p class="card-copy">See how payment innovation changed commerce, then follow an authorization request from the customer to the issuer and back.</p>
+        </div>
+        <div class="you-will">
+          <strong>You'll be able to:</strong>
+          <ul>
+            <li>Identify the major participants and their roles</li>
+            <li>Explain why an approval can happen in seconds</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="route-card">
+        <div class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 3v18M16 7.5c0-1.7-1.8-3-4-3s-4 1.3-4 3 1.5 2.5 4 3 4 1.3 4 3-1.8 3-4 3-4-1.3-4-3"/><path d="M4 4l16 16"/></svg>
+        </div>
+        <div>
+          <p class="card-label">Find the exposure</p>
+          <h2>Separate approval from finality.</h2>
+          <p class="card-copy">Connect authorization, fulfillment, settlement, funding and post-sale liability to understand why payments create temporary financial exposure.</p>
+        </div>
+        <div class="you-will">
+          <strong>You'll be able to:</strong>
+          <ul>
+            <li>Explain why approved funds can still be reversed</li>
+            <li>Compare how debit and credit move risk differently</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="route-card">
+        <div class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 4.8-3.2 7.7-8 9-4.8-1.3-8-4.2-8-9V7l8-4z"/><path d="M8.5 12l2.2 2.2 4.8-5"/></svg>
+        </div>
+        <div>
+          <p class="card-label">Layer the defenses</p>
+          <h2>See how risk is managed.</h2>
+          <p class="card-copy">Learn why merchant verification, transaction controls, data security and ongoing monitoring protect different points in the same risk lifecycle.</p>
+        </div>
+        <div class="you-will">
+          <strong>You'll be able to:</strong>
+          <ul>
+            <li>Distinguish KYC, fraud controls and PCI DSS</li>
+            <li>Explain why monitoring continues after activation</li>
+          </ul>
+        </div>
+      </article>
+    </section>
+
+    <aside class="bottom-line">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 18c3-6 7-9 16-12M15 5l5 1-2 5"/><circle cx="5" cy="18" r="2"/></svg>
+      <p><strong>The throughline:</strong> Convenience changes how payments move. Every change creates exposure, and every defense is designed to manage a specific part of it.</p>
+    </aside>
+  </main>
+</body>
+</html>
